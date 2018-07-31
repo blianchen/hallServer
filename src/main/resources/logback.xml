@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- scan是当配置文件被修改后会被重新加载; scanPeriod默认单位是毫秒,默认的时间间隔为1分钟。 -->
+	<configuration scan="true" scanPeriod="30 seconds">
+	
+	<property name="LOG_HOME" value="log/" />
+	
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{yy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="GAME_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名-->
+			<FileNamePattern>${LOG_HOME}/game_debug.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!--日志文件保留天数-->
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+		<!--日志文件最大的大小-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+		<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="DB_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/db_log.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+		<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<!-- =============newbee.morningGlory的定义=========== -->
+	<logger name="newbee.morningGlory">
+		<level value="INFO"></level>
+	</logger>
+	<logger name="newbee.morningGlory.mmorpg.sprite.MGFightProcessComponent">
+		<level value="INFO"></level>
+	</logger>
+	<logger
+		name="newbee.morningGlory.mmorpg.player.fightSkill.MGPlayerFightSkillTreeGameEventDelegate">
+		<level value="INFO"></level>
+	</logger>
+
+	<logger
+		name="newbee.morningGlory.mmorpg.gameInstance.persistence.GameInstanceDao">
+		<level value="DEBUG"></level>
+	</logger>
+	<logger name="newbee.morningGlory.mmorpg.ladder.persistence.MGLadderDAO">
+		<level value="DEBUG"></level>
+	</logger>
+	<logger name="newbee.morningGlory.mmorpg.union.persistence.MGUnionDAO">
+		<level value="DEBUG"></level>
+	</logger>
+	
+	<!-- =============sophia.foundation的定义=========== -->
+	<logger name="sophia.foundation">
+		<level value="INFO"></level>
+	</logger>
+	<logger name="sophia.foundation.communication.core.impl.MessageDecoderImpl">
+		<level value="INFO"></level>
+	</logger>
+	<logger name="sophia.foundation.communication.core.impl.MessageEncoderImpl">
+		<level value="INFO"></level>
+	</logger>
+
+	<logger name="org.logicalcobwebs.proxool.ProxoolFacade">
+		<level value="DEBUG"></level>
+	</logger>
+
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+<!-- 		<appender-ref ref="GAME_DEBUG" />
+		<appender-ref ref="GAME_INFO" />
+		<appender-ref ref="GAME_ERROR" /> -->
+	</root>
+</configuration>

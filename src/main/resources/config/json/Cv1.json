@@ -1,0 +1,8 @@
+[{"id":1,"room_type":4,"gold":[0,10000],"value":-300,"time":null}
+,{"id":2,"room_type":4,"gold":[10001,100000],"value":-50,"time":null}
+,{"id":3,"room_type":4,"gold":[100001,-1],"value":0,"time":null}
+,{"id":4,"room_type":3,"gold":[0,10000000],"value":50,"time":null}
+,{"id":5,"room_type":3,"gold":[10000001,-1],"value":100,"time":null}
+,{"id":6,"room_type":2,"gold":[0,1000000],"value":100,"time":null}
+,{"id":7,"room_type":2,"gold":[1000001,-1],"value":200,"time":null}
+]

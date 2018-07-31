@@ -1,0 +1,4 @@
+[{"id":1,"room_type":2,"min_num":20,"max_num":30,"detection_time":1,"weight_set":"low_1_15_120_8,middle_16_74_50_50,high_75_9999_30_200","contain_fish_type":2,"status":1}
+,{"id":2,"room_type":3,"min_num":20,"max_num":30,"detection_time":1,"weight_set":"low_1_20_100_10,middle_21_99_60_60,high_100_9999_40_350","contain_fish_type":3,"status":1}
+,{"id":3,"room_type":4,"min_num":20,"max_num":30,"detection_time":1,"weight_set":"low_1_10_150_6,middle_11_50_30_30,high_51_9999_20_100","contain_fish_type":4,"status":1}
+]
