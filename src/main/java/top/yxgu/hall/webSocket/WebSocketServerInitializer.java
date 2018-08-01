@@ -27,7 +27,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 //	private ProtobufDecoder protobufDecoder;
 	
 	@Resource
-    private SslContext sslContext;
+	public Object sslContext;
 	
 	@Value("${websocket.server.path:/ws}")
     private String websocketPath;
@@ -44,7 +44,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         if (sslContext != null) {
-        	SSLEngine engine = sslContext.newEngine(ch.alloc()); 
+        	SSLEngine engine = ((SslContext)sslContext).newEngine(ch.alloc()); 
         	engine.setNeedClientAuth(false);
         	engine.setUseClientMode(false);
         	pipeline.addFirst(new SslHandler(engine));
